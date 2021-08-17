@@ -5,6 +5,8 @@ class Config:
     This is the general configuration parent class
     '''
     SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:12345@localhost/pitches'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
 
 
 
