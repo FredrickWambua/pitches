@@ -1,9 +1,11 @@
 from flask import Flask, app
 from config import config_options
+from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, migrate
 from flask_login import LoginManager
 
+bootstap = Bootstrap()
 db = SQLAlchemy()
 migrate = Migrate()
 
@@ -18,6 +20,7 @@ def create_app(config_name):
     app.config.from_object(config_options[config_name])
 
     # Initializing flask extensions
+    Bootstrap(app)
     db.init_app(app)
     migrate.init_app(app, db)
     login_manager.init_app(app)
