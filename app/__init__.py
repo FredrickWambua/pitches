@@ -16,6 +16,10 @@ def create_app(config_name):
     db.init_app(app)
     migrate.init_app(app, db)
 
+    # registering the blueprint function
+    from .auth import auth as auth_blueprint
+    app.register_blueprint(auth_blueprint, url_prefix = '/authenticate')
+
 
 
     return app
