@@ -15,6 +15,8 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(250), unique = True)
     passcode = db.Column(db.String(250))
     pitch_id = db.Column(db.Integer, db.ForeignKey('pitches.id'))
+    bio = db.Column(db.String(255))
+    profile_pic_path = db.Column(db.String())
 
     @property
     def password(self):
