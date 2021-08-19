@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, migrate
 from flask_login import LoginManager
 from flask_uploads import UploadSet, configure_uploads, IMAGES
+from flask_mail import Mail
 
 bootstap = Bootstrap()
 db = SQLAlchemy()
@@ -14,6 +15,7 @@ login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
 photos = UploadSet('photos', IMAGES)
+mail = Mail()
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -29,6 +31,7 @@ def create_app(config_name):
     db.init_app(app)
     migrate.init_app(app, db)
     login_manager.init_app(app)
+    mail.init_app(app)
 
     # registering the blueprint function
     from .auth import auth as auth_blueprint
