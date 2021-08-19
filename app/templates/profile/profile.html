@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <!-- displaying name of the user -->
+        <div class="col-md-4">
+            <h3> {{user.name}} </h3>
+            <!-- displaying user bio -->
+            {% if user.bio %}
+                <p> {{ user.bio }} </p>
+            {% else %}
+                <p> {{ user.name }} has no bio </p>
+            {% endif %}
+        </div>
+        <!-- displaying profile photo -->
+        <div class="col-md-4">
+            {% if user.profile_pic_path %}
+                <img src=" {{ url_for('static', filename = user.profile_pic_path) }} " alt="" class="img-thubnail">
+            {% else %}
+                <p>No profile picture</p>
+            {% endif %}
+        </div> 
+    </div>
+</div>
+{% endblock %}
