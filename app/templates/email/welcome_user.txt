@@ -1,0 +1,3 @@
+Hello {{ user.name }}
+Welcome to The Pitch
+Thank you for signing up and we welcome you to the Pitch community. Create pitches and enjoy reading other peoples pitches.
