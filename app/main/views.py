@@ -1,18 +1,22 @@
-import re
+from flask import render_template
 from flask import render_template, request, redirect, url_for,abort
 from flask_login import login_required
 from flask_wtf import form
 from . import main
 from ..models import User, Pitch, Comment
-from .forms import updateProfile
+from .forms import  UpdateProfile, PitchForm,CommentForm
 from .. import db,photos
 
-@main.route('/pitch/', methods =['GET', 'POST'])
-@login_required
-def new_pitch(id):
+@main.route('/')
+def index():
+    pitches = Pitch.quert.all()
+    product = Pitch.query.filter_by(category = 'Product').all()
+    promotion = Pitch.query.filter_by(category = 'Promotion').all()
+    pick_up_lines = Pitch.query.filter_by(category = 'Pick Up Lines').all()
+    interviews = Pitch.query.filter_by(category = 'Interviews').all()
 
+    return render_template('index.html', pitches = pitches, product = product, promotion = promotion, pick_up_lines = pick_up_lines, interviews = interviews)
 
-    return render_template('index.html')
 
 @main.route('/user/<uname>')
 def update_profile(uname):
@@ -21,7 +25,7 @@ def update_profile(uname):
     if user is None:
         abort(404)
 
-    form = updateProfile()
+    form = UpdateProfile()
 
     if form.validate_on_submit():
         user.bio = form.bio.data
