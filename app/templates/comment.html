@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %} 
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% if all_comments %}
+        <div class="col-md-7">
+            <h3>Pitch comments</h3>
+            {% for comment in all_comments %}
+            <div class="card">
+                <div class="card-body">
+                    <p>{{comment.pitch.title}} </p>
+                    <p> {{comment.comment}} </p>
+                    <p> {{comment.user.name}} </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-5">
+            {{wtf.quick_form(form)}}
+        </div>
+        {% else %}
+        <div class="card">
+            <div class="card-body">
+                <p class="card-title">No comments yet for this pitch post</p>
+            </div>
+        </div>
+        <div class="col-md-5">
+            {{wtf.quick_form(form)}}
+        </div>
+       
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}
