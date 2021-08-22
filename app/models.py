@@ -2,6 +2,7 @@ from . import db
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash,check_password_hash
 from . import login_manager
+from datetime import datetime
 
 
 @login_manager.user_loader
@@ -40,6 +41,7 @@ class Pitch(db.Model):
     title = db.Column(db.String(250))
     category = db.Column(db.String(250))
     pitch = db.Column(db.String(300))
+    posted_at = db.Column(db.String(300))
     users = db.relationship('User', backref='pitch', lazy='dynamic')
     
     def __repr__(self):
