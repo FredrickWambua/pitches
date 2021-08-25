@@ -1,0 +1,5 @@
+Hello{{user.name}}
+Welcome to The Pitch where you can pitch your ideas.
+Feel free to share your ideas in The Pitch.
+
+Thank you for signing up and again welcome.

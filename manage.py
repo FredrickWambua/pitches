@@ -1,3 +1,4 @@
+import os
 from app import create_app, db
 from app.models import Comment, User, Pitch
 from flask_script import Manager, Server

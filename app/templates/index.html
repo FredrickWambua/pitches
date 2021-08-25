@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
+{% block content %}
+
+<div class="container">
+  <h3 class="text-center" id="pitches">All pitches</h3>
+  <div class="pitch-content">
+    <div class="pitch-info">
+      {{ macro.display(pitches) }}
+    </div>
+    <div class="products">
+      {{ macro.display(product) }}
+    </div>
+    <div class="promotion">
+      {{ macro.display(promotion) }}
+    </div>
+    <div class="pick-up-lines">
+      {{ macro.display(interview) }}
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+
+
+

@@ -1,4 +1,4 @@
-import re
+
 from . import db
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash,check_password_hash
@@ -54,7 +54,7 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     comment = db.Column(db.String(250))
     posted_at = db.Column(db.String(300))
-    pitches_id = db.Column(db.Integer, db.ForeignKey('pitches.id'))
+    pitch_id = db.Column(db.Integer, db.ForeignKey('pitches.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def save_comment(self):
